@@ -1,21 +1,24 @@
 input {
   file {
-    path => "/picclife/weblogic/wlserver12.2.1.3/user_projects/domains/base_domain/logs/error_*"
-    codec => multiline {
-      pattern => "^\s"
-      what => "previous"
-    }
+    path => "${ACCESS_LOG_PATH}"
+    type => "weblogic-access"
+    tags => "${TAGS}"
   }
 }
 
-filter {}
+filter {
+   grok {
+      match => [ "message", "%{IP:client} - - \[(?<timestamp>%{MONTHDAY}[./-]%{MONTH}[./-]%{YEAR}:%{TIME}\s+%{ISO8601_TIMEZONE})] \"%{WORD:verb} %{URIPATHPARAM:uri}\s+HTTP.+?\" %{NUMBER:status:int} %{NUMBER:response_time:float}" ]
+    }
+    date {
+      match => [ "timestamp" , "dd/MMM/yyyy:HH:mm:ss Z" ]
+    }
+}
 
 output {
     elasticsearch {
-        hosts => ["10.137.193.59:9200", "10.137.193.60:9200","10.137.193.62:9200"]
-        index => "cbs-local-error-%{+YYYY.MM.dd}"
-        sniffing => true
-        template_overwrite => true
+      hosts => "${ES_SERVICES}"
+      index => "${INDEX}"
     }
 }
 

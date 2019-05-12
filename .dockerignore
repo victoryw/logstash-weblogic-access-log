@@ -1,0 +1,4 @@
+*
+!weblogic-access-pipeline.yml
+
+# claim-web-uat-%{+YYYY.MM.dd} ["cbs-claim-web", "uat"]
