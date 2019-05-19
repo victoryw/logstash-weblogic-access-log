@@ -1,0 +1,21 @@
+Sending Logstash logs to /Users/victoryw/myfiles/worksspace/elk/logstash/logstatsh/logstash-7.0.1/logs which is now configured via log4j2.properties
+[2019-05-19T19:23:46,307][WARN ][logstash.config.source.multilocal] Ignoring the 'pipelines.yml' file because modules or command line options are specified
+[2019-05-19T19:23:46,376][INFO ][logstash.runner          ] Starting Logstash {"logstash.version"=>"7.0.1"}
+[2019-05-19T19:23:59,942][INFO ][logstash.javapipeline    ] Starting pipeline {:pipeline_id=>"main", "pipeline.workers"=>4, "pipeline.batch.size"=>125, "pipeline.batch.delay"=>50, "pipeline.max_inflight"=>500, :thread=>"#<Thread:0x196df642 run>"}
+[2019-05-19T19:24:00,772][INFO ][logstash.inputs.file     ] No sincedb_path set, generating one based on the "path" setting {:sincedb_path=>"/Users/victoryw/myfiles/worksspace/elk/logstash/logstatsh/logstash-7.0.1/data/plugins/inputs/file/.sincedb_f3a55c0ad04948dde2b6003705708d92", :path=>["/Users/victoryw/myfiles/worksspace/elk/logstash/Adminserver.log"]}
+[2019-05-19T19:24:00,947][INFO ][logstash.javapipeline    ] Pipeline started {"pipeline.id"=>"main"}
+[2019-05-19T19:24:01,148][INFO ][logstash.agent           ] Pipelines running {:count=>1, :running_pipelines=>[:main], :non_running_pipelines=>[]}
+[2019-05-19T19:24:01,190][INFO ][filewatch.observingtail  ] START, creating Discoverer, Watch with file and sincedb collections
+[2019-05-19T19:24:02,155][INFO ][logstash.agent           ] Successfully started Logstash API endpoint {:port=>9600}
+{
+    "@timestamp" => 2019-05-19T11:24:16.370Z,
+       "message" => "####<May 22, 2039, 4:55:02,740 PM China Standard Time> <Info> <Deployer> <cbs-claim-web-java11-sc-uat-6b9dc588d8-tprqn> <AdminServer> <[STANDBY] ExecuteThread: '1' for queue: 'weblogic.kernel.Default (self-tuning)'> <<WLS Kernel>> <> <f167f146-33a5-457a-9677-333826611fcc-00000008> <1557824102740> <[partition-name: DOMAIN] [severity-value: 8] [rid: 0] [partition-id: 0] > <BEA-149231> <Unable to set the activation state to true for the application \"life\".\r",
+      "@version" => "1",
+          "type" => "weblogic-admin",
+          "host" => "wangyan-mac-2016.local",
+          "tags" => [
+        [0] "[\"weblogic-web\", \"uat\"]",
+        [1] "_grokparsefailure"
+    ],
+          "path" => "/Users/victoryw/myfiles/worksspace/elk/logstash/Adminserver.log"
+}

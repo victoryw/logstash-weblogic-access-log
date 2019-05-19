@@ -1,0 +1,53 @@
+input {
+  # file {
+  #   path => "${ACCESS_LOG_PATH}"
+  #   type => "weblogic-access"
+  #   tags => "${TAGS}"
+  # }
+
+  file {
+    path => "${ADMIN_LOG_PATH}"
+    type => "weblogic-admin"
+    tags => "${TAGS}"
+    codec => multiline {
+      pattern => "^####"
+      negate => true
+      what => previous
+    }
+  }
+}
+
+filter {
+   if [type] == "weblogic-access" {
+      grok {
+        match => [ "message", "%{IP:client} - - \[(?<timestamp>%{MONTHDAY}[./-]%{MONTH}[./-]%{YEAR}:%{TIME}\s+%{ISO8601_TIMEZONE})] \"%{WORD:verb} %{URIPATHPARAM:uri}\s+HTTP.+?\" %{NUMBER:status:int} %{NUMBER:response_time:float}" ]
+      }
+      date {
+        match => [ "timestamp" , "dd/MMM/yyyy:HH:mm:ss Z" ]
+      }    
+   }
+
+  #  if [type] == "weblogic-admin" {
+  #     grok {
+  #         match => [ "message", "####<%{DATA:wls_timestamp}> <%{WORD:severity}> <%{DATA:topic}> <%{DATA:hostname}> <%{WORD:server}> <%{DATA:thread}>%{DATA:other}<BEA-%{DATA:wls_beacode}>%{SPACE}(?<start_error><Unable to set the activation state to true for the application \\"life\\".)" ]
+  #     }
+  #     date {
+  #       match => [ "timestamp" , "dd/MMM/yyyy:HH:mm:ss Z" ]
+  #     }
+  #   }
+     grok {
+          match => [ "message", "####<%{DATA:wls_timestamp}> <%{WORD:severity}> <%{DATA:topic}> <%{DATA:hostname}> <%{WORD:server}> <%{DATA:thread}>%{DATA:other}<BEA-%{DATA:wls_beacode}>%{SPACE}(?<start_error><Unable to set the activation state to true for the application \\"life\\".)" ]
+     }
+}
+
+output {
+    # elasticsearch {
+    #   hosts => "${ES_SERVICES}"
+    #   index => "${INDEX}"
+    # }
+
+    stdout {
+      codec => rubydebug
+    }
+}
+

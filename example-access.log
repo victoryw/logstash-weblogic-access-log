@@ -7,3 +7,15 @@
 10.137.194.14 - - [11/May/2019:15:48:02 +0800] "GET /life/metrics/ping HTTP/1.1" 200 5
 10.137.194.14 - - [11/May/2019:15:48:02 +0800] "GET /life/metrics/ping HTTP/1.1" 500 5
 10.137.194.14 - - [12/May/2019:23:48:02 +0800] "GET /life/metrics/ping HTTP/1.1" 500 5
+10.137.194.14 - - [14/May/2019:23:48:02 +0800] "GET /life/metrics/ping HTTP/1.1" 500 5
+10.137.194.14 - - [15/May/2019:23:48:02 +0800] "GET /life/metrics/ping HTTP/1.1" 500 5
+10.137.194.14 - - [16/May/2019:23:48:02 +0800] "GET /life/metrics/ping HTTP/1.1" 500 5
+10.137.194.14 - - [20/May/2019:23:48:02 +0800] "GET /life/metrics/ping HTTP/1.1" 500 5
+10.137.194.14 - - [20/May/2019:23:48:02 +0800] "GET /life/metrics/ping HTTP/1.1" 200 5
+10.137.194.15 - - [21/May/2019:23:48:02 +0800] "GET /life/metrics/ping HTTP/1.1" 100 5
+10.137.194.15 - - [21/May/2019:23:48:02 +0800] "GET /life/metrics/ping HTTP/1.1" 200 5
+10.137.194.15 - - [21/May/2019:23:48:02 +0800] "GET /life/metrics/ping HTTP/1.1" 300 5
+10.137.194.15 - - [21/May/2019:23:48:02 +0800] "GET /life/metrics/ping HTTP/1.1" 400 5
+10.137.194.15 - - [22/May/2019:23:48:02 +0800] "GET /life/metrics/ping HTTP/1.1" 500 6
+10.137.194.15 - - [22/May/2019:23:48:02 +0800] "GET /life/metrics/ping HTTP/1.1" 800 6
+10.137.194.15 - - [22/May/2019:23:48:02 +0800] "GET /life/metrics/ping HTTP/1.1" 900 6
