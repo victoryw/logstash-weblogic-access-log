@@ -27,17 +27,11 @@ filter {
       }    
    }
 
-  #  if [type] == "weblogic-admin" {
-  #     grok {
-  #         match => [ "message", "####<%{DATA:wls_timestamp}> <%{WORD:severity}> <%{DATA:topic}> <%{DATA:hostname}> <%{WORD:server}> <%{DATA:thread}>%{DATA:other}<BEA-%{DATA:wls_beacode}>%{SPACE}(?<start_error><Unable to set the activation state to true for the application \\"life\\".)" ]
-  #     }
-  #     date {
-  #       match => [ "timestamp" , "dd/MMM/yyyy:HH:mm:ss Z" ]
-  #     }
-  #   }
-     grok {
+   if [type] == "weblogic-admin" {
+      grok {
           match => [ "message", "####<%{DATA:wls_timestamp}> <%{WORD:severity}> <%{DATA:topic}> <%{DATA:hostname}> <%{WORD:server}> <%{DATA:thread}>%{DATA:other}<BEA-%{DATA:wls_beacode}>%{SPACE}(?<start_error><Unable to set the activation state to true for the application \\"life\\".)" ]
-     }
+      }
+    }
 }
 
 output {
